@@ -1,0 +1,14 @@
+{
+  "name": "go-web",
+  "image": "mcr.microsoft.com/devcontainers/go:1-1.23-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["golang.go"]
+    }
+  },
+  "postCreateCommand": "go mod download || true",
+  "forwardPorts": [8080]
+}
