@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	_ "github.com/lib/pq"
+	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
 // setupTestDB abre una conexión a la misma base usada por la app.
@@ -18,7 +18,7 @@ func setupTestDB(t *testing.T) *sql.DB {
 	t.Helper()
 
 	dsn := "host=database port=5432 user=postgres password=supersecret dbname=tp2_db sslmode=disable"
-	db, err := sql.Open("postgres", dsn)
+	db, err := sql.Open("pgx", dsn)
 	if err != nil {
 		t.Fatalf("no se pudo abrir la conexión: %v", err)
 	}

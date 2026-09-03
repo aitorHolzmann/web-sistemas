@@ -4,10 +4,7 @@ import (
 	"database/sql"
 	"time"
 
-	_ "github.com/lib/pq"
-	//Como no viene por default. Tenemos que ejecutar
-	//go mod init tp2
-	//go get github.com/lib/pq
+	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
 // User representa la entidad de base de datos

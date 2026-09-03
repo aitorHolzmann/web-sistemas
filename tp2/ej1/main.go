@@ -1,19 +1,20 @@
 package main
 
 import (
+	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
 
-	"database/sql"
 	"tp2/repository"
 
-	_ "github.com/lib/pq"
+	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
 func abrirDB() (*sql.DB, error) {
 	dsn := "host=database port=5432 user=postgres password=supersecret dbname=tp2_db sslmode=disable"
-	db, err := sql.Open("postgres", dsn)
+	//db, err := sql.Open("postgres", dsn)
+	db, err := sql.Open("pgx", dsn)
 	if err != nil {
 		return nil, err
 	}
@@ -39,7 +40,7 @@ func main() {
 		Email: "prueba@ejemplo.com",
 	}
 
-	repo := repository.NewUserRepository(db)
+	repo := repository.NewUserRepository(db) //Creo el objeto que conoce los metodos para hacer las consultas
 	err = repo.CreateUser(nuevoUsuario)
 
 	if err != nil {
