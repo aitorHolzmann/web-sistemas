@@ -1,10 +1,12 @@
 FROM golang:1.23
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    RUN go install github.com/sqlc-dev/sqlc/cmd/sqlc@v1.31.1 \
     git \
     curl \
     postgresql-client \
     && rm -rf /var/lib/apt/lists/*
+
+RUN curl -fsSL https://github.com/sqlc-dev/sqlc/releases/download/v1.31.1/sqlc_1.31.1_linux_amd64.tar.gz \
+    | tar -xz -C /usr/local/bin sqlc
 
 WORKDIR /workspace
