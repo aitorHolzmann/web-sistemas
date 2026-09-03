@@ -1,0 +1,12 @@
+# Configuraciones del IDE
+.vscode/
+
+# Binarios y compilaciones de Go (por las dudas)
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+bin/
